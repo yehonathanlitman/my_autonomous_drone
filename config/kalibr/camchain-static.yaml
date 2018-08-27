@@ -1,0 +1,9 @@
+cam0:
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [-0.030931984892282122, 0.05966444865054952, -0.06312013819360535,
+    0.031405114547754694]
+  distortion_model: equidistant
+  intrinsics: [437.9446619859144, 437.20674125837894, 333.2810599972569, 249.16103363786752]
+  resolution: [752, 480]
+  rostopic: /firefly/image_raw

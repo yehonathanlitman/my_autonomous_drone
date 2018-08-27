@@ -1,0 +1,20 @@
+Calibration results 
+====================
+Camera-system parameters:
+	cam0 (/firefly/image_raw):
+	 type: <class 'aslam_cv.libaslam_cv_python.EquidistantDistortedPinholeCameraGeometry'>
+	 distortion: [-0.03093198  0.05966445 -0.06312014  0.03140511] +- [ 0.01025962  0.03966644  0.06426831  0.03583882]
+	 projection: [ 437.94466199  437.20674126  333.28106     249.16103364] +- [ 2.45432779  2.40338176  1.98203618  1.36368349]
+	 reprojection error: [-0.000000, -0.000001] +- [0.157766, 0.247005]
+
+
+
+Target configuration
+====================
+
+  Type: aprilgrid
+  Tags: 
+    Rows: 6
+    Cols: 6
+    Size: 0.02 [m]
+    Spacing 0.006 [m]

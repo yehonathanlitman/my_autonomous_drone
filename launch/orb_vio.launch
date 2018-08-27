@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+ 	<node pkg="ORB_VIO" type="VIO" name="VIO"  args="$(find my_autonomous_drone)/config/Vocabulary/ORBvoc.bin $(find my_autonomous_drone)/config/firefly_px4.yaml" cwd="node" output="screen">
+	</node>
+
+</launch>

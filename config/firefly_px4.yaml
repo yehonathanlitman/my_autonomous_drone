@@ -1,0 +1,123 @@
+%YAML:1.0
+
+# 1: realtime, 0: non-realtime
+test.RealTime: 1
+# Time for visual-inertial initialization
+test.VINSInitTime: 15.0
+
+# Modify test.InitVIOTmpPath and bagfile to the correct path
+# Path to save tmp files/results
+test.InitVIOTmpPath: "/home/bernie/Downloads/misc/orb_tmp/"
+
+## For good initialization (no movement at the beginning for some bag)
+test.DiscardTime: 0
+#bagfile: "/home/jp/TimeV1_01_easy.bag"
+## bad: V1_03_difficult(wrong), V2_03_difficult(lost)
+## not so good(cant close loop without loopclosure): V1_02_medium, V2_02_medium, MH_05_difficult
+## good: V1_01_easy, V2_01_easy, MH_01_easy, MH_02_easy, MH_03_medium, MH_04_difficult
+
+#test.DiscardTime: 18
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/MH_03_medium.bag"
+
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/MH_04_difficult.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/MH_05_difficult.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/MH_02_easy.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/MH_01_easy.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/V2_02_medium.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/V2_01_easy.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/V1_02_medium.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/V1_01_easy.bag"
+
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/V1_03_difficult.bag"
+#bagfile: "/media/jp/JingpangPassport/3dataset/EuRoC-VIO/un_restamped/V2_03_difficult.bag"
+
+
+#######################################
+
+imutopic: "/mavros/imu/data"
+imagetopic: "/camera/image_raw"
+
+
+# Timestamp shift. Timage = Timu + image_delay
+Camera.delaytoimu: 0
+
+# acc=acc*9.8, if below is 1
+IMU.multiplyG: 0
+
+# camera-imu frame transformation, Pi = Tic * Pc
+Camera.Tbc:
+ [0.004894804136389347, -0.9999879178464115, 0.0004528285191321979, 0.006199500637559137,
+  0.01416632816580582, -0.0003834462767998703, -0.99989957901544, -0.028473240766672892,
+  0.9998876717105615, 0.004900727512743619, 0.014164280111631289, -0.1048104559980291,
+  0.0, 0.0, 0.0, 1.0]
+
+# Local Window size
+LocalMapping.LocalWindowSize: 20
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+
+# Camera calibration and distortion parameters (OpenCV) 
+Camera.fx: 437.9446619859144
+Camera.fy: 437.20674125837894
+Camera.cx: 333.2810599972569
+Camera.cy: 249.16103363786752
+
+Camera.k1: -0.030931984892282122
+Camera.k2: 0.05966444865054952
+Camera.p1: -0.06312013819360535
+Camera.p2: 0.031405114547754694
+
+Camera.width: 752
+Camera.height: 480
+
+# Camera frames per second 
+Camera.fps: 20.0
+
+# IR projector baseline times fx (aprox.)
+Camera.bf: 40.0
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
+# Close/Far threshold. Baseline times.
+ThDepth: 40.0
+
+# Deptmap values factor
+DepthMapFactor: 1.0
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image
+ORBextractor.nFeatures: 1000
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid 
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
+# Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
+# You can lower these values if your images have low contrast   
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize:2
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3
+Viewer.ViewpointX: 0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500
+

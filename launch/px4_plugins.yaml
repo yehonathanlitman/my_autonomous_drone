@@ -1,0 +1,14 @@
+plugin_blacklist:
+# common
+- 3dr_radio
+- safety_area
+# extras
+- image_pub
+- vibration
+- distance_sensor
+- rangefinder
+- fake_gps
+plugin_whitelist:
+#- 'sys_*'
+# Extras
+- copter_visualization
